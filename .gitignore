@@ -1,0 +1,3 @@
+checkpoints/*/*.pth
+checkpoints/*/runs
+# !checkpoints/02/checkpoint_150.pth
