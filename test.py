@@ -33,8 +33,9 @@ def main():
     input_image = input_image.unsqueeze(0).to(device)
     with torch.no_grad():
         output = torch.softmax(model(input_image), 1)
-        max_value, max_index = torch.max(output, 1)
-        print(f"{class_dict[max_index.item()]}[{max_value.item() * 100:.2f}%]")
+        list_value, list_index = torch.sort(output, 1, True)
+        for i in range(6):
+            print(f"{class_dict[list_index[0][i]]}[{list_value[0][i]:.4f}]")
 
 
 if __name__ == "__main__":
